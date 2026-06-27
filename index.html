@@ -5,88 +5,659 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>SVE | Sistema de Validación Electrónica</title>
-  <meta name="description" content="Sistema profesional de validación electrónica de documentos mediante código QR o código único de verificación." />
-  <meta name="keywords" content="validación electrónica, certificados digitales, QR, documentos profesionales, SVE, verificación documental" />
-  <meta name="author" content="Sistema de Validación Electrónica" />
-  <meta name="robots" content="index, follow" />
-
-  <meta property="og:title" content="SVE | Sistema de Validación Electrónica" />
-  <meta property="og:description" content="Verificación segura de documentos profesionales mediante código QR o código único." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://validacion.informespsicologicos.com/" />
-  <meta property="og:image" content="https://validacion.informespsicologicos.com/assets/og-image.svg" />
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="SVE | Sistema de Validación Electrónica" />
-  <meta name="twitter:description" content="Verificación segura de documentos profesionales mediante QR o código único." />
-  <meta name="twitter:image" content="https://validacion.informespsicologicos.com/assets/og-image.svg" />
-
+  <meta name="description" content="Sistema de Validación Electrónica para verificar certificados, informes y documentos mediante código QR o código único." />
   <link rel="canonical" href="https://validacion.informespsicologicos.com/" />
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
-  <link rel="apple-touch-icon" href="assets/apple-touch-icon.svg" />
-  <link rel="manifest" href="site.webmanifest" />
-  <link rel="stylesheet" href="style.css" />
 
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"SoftwareApplication",
-    "name":"SVE - Sistema de Validación Electrónica",
-    "applicationCategory":"BusinessApplication",
-    "operatingSystem":"Web",
-    "url":"https://validacion.informespsicologicos.com/",
-    "description":"Sistema profesional de validación electrónica de documentos mediante QR y código único.",
-    "publisher":{
-      "@type":"Organization",
-      "name":"Sistema de Validación Electrónica",
-      "email":"sistemadevalidacionelectronica@gmail.com"
+  <style>
+    :root {
+      --azul: #2563eb;
+      --azul2: #1e40af;
+      --verde: #16a34a;
+      --oscuro: #0f172a;
+      --gris: #64748b;
+      --borde: #e2e8f0;
+      --fondo: #f5f7fb;
+      --blanco: #ffffff;
+      --sombra: 0 20px 60px rgba(15,23,42,.12);
     }
-  }
-  </script>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(37,99,235,.16), transparent 35%),
+        radial-gradient(circle at top right, rgba(22,163,74,.10), transparent 30%),
+        var(--fondo);
+      color: var(--oscuro);
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    header {
+      background: rgba(255,255,255,.92);
+      border-bottom: 1px solid var(--borde);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+    }
+
+    .nav {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+
+    .logo {
+      width: 62px;
+      height: 62px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #38bdf8, var(--azul), var(--azul2));
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 22px;
+      letter-spacing: 1px;
+      box-shadow: 0 12px 30px rgba(37,99,235,.30);
+      flex: 0 0 auto;
+    }
+
+    .brand-title {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+
+    .brand-title strong {
+      font-size: 20px;
+      letter-spacing: -.03em;
+    }
+
+    .brand-title small {
+      margin-top: 4px;
+      color: var(--gris);
+      font-weight: 700;
+      font-size: 12px;
+    }
+
+    .menu {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .menu a {
+      text-decoration: none;
+      font-weight: 800;
+      color: #334155;
+      padding: 10px 12px;
+      border-radius: 12px;
+    }
+
+    .menu a:hover {
+      background: #eff6ff;
+      color: var(--azul);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      border-radius: 14px;
+      padding: 14px 20px;
+      font-weight: 900;
+      font-size: 15px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: .2s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--azul), var(--azul2));
+      color: white;
+      box-shadow: 0 12px 30px rgba(37,99,235,.24);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: var(--oscuro);
+      border: 1px solid var(--borde);
+    }
+
+    .hero {
+      padding: 76px 0 44px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #eff6ff;
+      color: #1d4ed8;
+      border: 1px solid #bfdbfe;
+      padding: 9px 14px;
+      border-radius: 999px;
+      font-weight: 900;
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    .tag-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: var(--verde);
+      box-shadow: 0 0 0 6px rgba(22,163,74,.14);
+    }
+
+    h1 {
+      font-size: clamp(40px, 6vw, 72px);
+      line-height: .96;
+      letter-spacing: -.06em;
+      margin: 0 0 22px;
+    }
+
+    .lead {
+      font-size: 20px;
+      line-height: 1.6;
+      color: var(--gris);
+      margin: 0 0 28px;
+      max-width: 680px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .chips span {
+      background: rgba(255,255,255,.82);
+      border: 1px solid var(--borde);
+      color: #475569;
+      font-size: 13px;
+      font-weight: 800;
+      padding: 9px 12px;
+      border-radius: 999px;
+    }
+
+    .mockup {
+      background: linear-gradient(180deg, #0f172a, #111827);
+      color: white;
+      border-radius: 34px;
+      padding: 24px;
+      box-shadow: 0 35px 90px rgba(15,23,42,.34);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .mockup::before {
+      content: "";
+      position: absolute;
+      right: -90px;
+      top: -100px;
+      width: 260px;
+      height: 260px;
+      background: rgba(37,99,235,.45);
+      border-radius: 50%;
+      filter: blur(8px);
+    }
+
+    .mock-inner {
+      position: relative;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 26px;
+      padding: 22px;
+      backdrop-filter: blur(10px);
+    }
+
+    .qr-box {
+      width: 178px;
+      height: 178px;
+      margin: 8px auto 22px;
+      border-radius: 22px;
+      background: white;
+      padding: 14px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .qr {
+      width: 100%;
+      height: 100%;
+      background:
+        linear-gradient(90deg, #0f172a 12px, transparent 12px) 0 0 / 32px 32px,
+        linear-gradient(#0f172a 12px, transparent 12px) 0 0 / 32px 32px,
+        #fff;
+      border: 10px solid #0f172a;
+    }
+
+    .scan {
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      top: 22px;
+      height: 3px;
+      background: #22c55e;
+      box-shadow: 0 0 16px #22c55e;
+      animation: scan 2.3s infinite ease-in-out;
+    }
+
+    @keyframes scan {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(124px); }
+    }
+
+    .verified {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .verified-icon {
+      width: 64px;
+      height: 64px;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      background: var(--verde);
+      margin: 0 auto 12px;
+      font-weight: 900;
+      font-size: 34px;
+    }
+
+    .verified h3 {
+      font-size: 26px;
+      margin: 0 0 8px;
+      letter-spacing: -.03em;
+    }
+
+    .verified p {
+      color: rgba(255,255,255,.70);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .rows {
+      display: grid;
+      gap: 10px;
+    }
+
+    .rows div {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      background: rgba(255,255,255,.08);
+      padding: 12px 14px;
+      border-radius: 14px;
+      color: rgba(255,255,255,.72);
+    }
+
+    .rows strong {
+      color: white;
+      text-align: right;
+    }
+
+    section {
+      padding: 58px 0;
+    }
+
+    .card {
+      background: rgba(255,255,255,.90);
+      border: 1px solid var(--borde);
+      border-radius: 26px;
+      box-shadow: var(--sombra);
+      padding: 30px;
+    }
+
+    .validator-card {
+      display: grid;
+      grid-template-columns: .92fr 1.08fr;
+      gap: 26px;
+      align-items: center;
+    }
+
+    .section-label {
+      display: inline-block;
+      background: #eff6ff;
+      color: var(--azul2);
+      border: 1px solid #bfdbfe;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-weight: 900;
+      font-size: 13px;
+      margin-bottom: 14px;
+    }
+
+    h2 {
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1.05;
+      letter-spacing: -.05em;
+      margin: 0 0 14px;
+    }
+
+    .muted {
+      color: var(--gris);
+      line-height: 1.62;
+      font-size: 17px;
+      margin-bottom: 0;
+    }
+
+    form {
+      display: grid;
+      gap: 12px;
+    }
+
+    label {
+      font-weight: 900;
+      color: #334155;
+    }
+
+    input, textarea {
+      width: 100%;
+      border: 1px solid var(--borde);
+      border-radius: 15px;
+      padding: 15px 14px;
+      font-size: 16px;
+      outline: none;
+      background: white;
+    }
+
+    input:focus, textarea:focus {
+      border-color: var(--azul);
+      box-shadow: 0 0 0 4px rgba(37,99,235,.12);
+    }
+
+    .input-row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .message {
+      min-height: 22px;
+      margin: 0;
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--gris);
+    }
+
+    .message.error {
+      color: #dc2626;
+    }
+
+    .message.ok {
+      color: var(--verde);
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .mini-card {
+      background: white;
+      border: 1px solid var(--borde);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: 0 12px 34px rgba(15,23,42,.06);
+    }
+
+    .mini-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: #eff6ff;
+      color: var(--azul);
+      font-size: 24px;
+      margin-bottom: 16px;
+    }
+
+    .mini-card h3 {
+      margin: 0 0 10px;
+      font-size: 21px;
+    }
+
+    .mini-card p, .mini-card li {
+      color: var(--gris);
+      line-height: 1.55;
+    }
+
+    .dark {
+      background: #0f172a;
+      color: white;
+    }
+
+    .dark .muted {
+      color: rgba(255,255,255,.72);
+    }
+
+    .check-list {
+      list-style: none;
+      padding: 0;
+      margin: 24px 0 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .check-list li {
+      line-height: 1.5;
+      color: rgba(255,255,255,.84);
+    }
+
+    .check-list li::before {
+      content: "✓";
+      display: inline-grid;
+      place-items: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      margin-right: 8px;
+      background: var(--verde);
+      color: white;
+      font-weight: 900;
+    }
+
+    .price {
+      font-size: 34px;
+      font-weight: 900;
+      letter-spacing: -.05em;
+      margin: 8px 0 18px;
+    }
+
+    .mini-card ul {
+      margin: 0 0 20px;
+      padding-left: 20px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 22px;
+    }
+
+    .contact-box {
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: white;
+      border-radius: 26px;
+      padding: 30px;
+      box-shadow: var(--sombra);
+    }
+
+    .contact-box a {
+      display: block;
+      text-decoration: none;
+      font-weight: 900;
+      padding: 13px 14px;
+      background: rgba(255,255,255,.09);
+      border-radius: 14px;
+      margin-top: 12px;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    footer {
+      background: white;
+      border-top: 1px solid var(--borde);
+      padding: 34px 0;
+      color: var(--gris);
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-size: 14px;
+    }
+
+    .wa {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      width: 60px;
+      height: 60px;
+      border-radius: 999px;
+      background: #25D366;
+      color: white;
+      display: grid;
+      place-items: center;
+      text-decoration: none;
+      font-size: 30px;
+      box-shadow: 0 16px 36px rgba(37,211,102,.38);
+      z-index: 100;
+    }
+
+    @media (max-width: 900px) {
+      .menu {
+        display: none;
+      }
+
+      .hero-grid,
+      .validator-card,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .input-row {
+        flex-direction: column;
+      }
+
+      .hero {
+        padding-top: 48px;
+      }
+
+      h1 {
+        font-size: 42px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .brand-title strong {
+        font-size: 16px;
+      }
+
+      .brand-title small {
+        font-size: 11px;
+      }
+
+      .logo {
+        width: 54px;
+        height: 54px;
+        font-size: 19px;
+      }
+
+      .card {
+        padding: 22px;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <div class="site-bg" aria-hidden="true"></div>
-
-  <header class="header" id="top">
+  <header>
     <div class="container nav">
-      <a class="brand" href="#top" aria-label="Inicio SVE">
-        <img class="brand-logo" src="assets/logo-sve.svg" alt="Logo SVE" />
-        <span>
+      <a class="brand" href="#inicio">
+        <div class="logo">SVE</div>
+        <div class="brand-title">
           <strong>Sistema de Validación Electrónica</strong>
           <small>Powered by InformesPsicologicos.com</small>
-        </span>
+        </div>
       </a>
 
-      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-
-      <nav class="nav-links" id="navLinks" aria-label="Navegación principal">
+      <nav class="menu">
         <a href="#validar">Validar</a>
+        <a href="#funcionamiento">Funcionamiento</a>
         <a href="#seguridad">Seguridad</a>
         <a href="#planes">Planes</a>
-        <a href="#faq">FAQ</a>
-        <a class="nav-cta" href="#contacto">Contacto</a>
+        <a href="#contacto">Contacto</a>
       </nav>
     </div>
   </header>
 
-  <main>
-    <section class="hero section">
+  <main id="inicio">
+    <section class="hero">
       <div class="container hero-grid">
-        <div class="hero-copy reveal">
-          <div class="eyebrow">
-            <span class="pulse-dot"></span>
-            Plataforma activa de verificación documental
-          </div>
-
+        <div>
+          <div class="tag"><span class="tag-dot"></span> Plataforma activa de verificación documental</div>
           <h1>Validación electrónica profesional mediante QR o código único.</h1>
-
           <p class="lead">
-            SVE permite verificar la autenticidad de certificados, informes y documentos
-            profesionales emitidos digitalmente, redirigiendo al documento original alojado
-            en el dominio oficial del emisor.
+            SVE permite verificar la autenticidad de certificados, informes y documentos profesionales emitidos digitalmente,
+            redirigiendo al documento original alojado en el dominio oficial del emisor.
           </p>
 
           <div class="hero-actions">
@@ -94,123 +665,98 @@
             <a class="btn btn-secondary" href="#funcionamiento">Ver funcionamiento</a>
           </div>
 
-          <div class="trust-row" aria-label="Características principales">
+          <div class="chips">
             <span>QR</span>
             <span>Código único</span>
             <span>Dominio oficial</span>
-            <span>Mobile ready</span>
+            <span>Compatible con móviles</span>
           </div>
         </div>
 
-        <div class="hero-visual reveal">
-          <div class="glass-device">
-            <div class="device-top">
-              <span></span><span></span><span></span>
+        <aside class="mockup">
+          <div class="mock-inner">
+            <div class="qr-box">
+              <div class="qr"></div>
+              <div class="scan"></div>
             </div>
 
-            <div class="scan-card">
-              <div class="qr-shell">
-                <img src="assets/qr-demo.svg" alt="Código QR demostrativo" />
-                <div class="scan-line"></div>
-              </div>
+            <div class="verified">
+              <div class="verified-icon">✓</div>
+              <h3>Documento verificado</h3>
+              <p>El código dirige al documento original publicado en el dominio oficial.</p>
+            </div>
 
-              <div class="verified-badge">
-                <span>✓</span>
-                Documento verificado
-              </div>
-
-              <div class="verify-table">
-                <div><span>Código</span><strong>CERT-2026-045</strong></div>
-                <div><span>Estado</span><strong class="ok">Válido</strong></div>
-                <div><span>Emisor</span><strong>InformesPsicologicos.com</strong></div>
-                <div><span>Método</span><strong>QR / Código</strong></div>
-              </div>
+            <div class="rows">
+              <div><span>Código</span><strong>CERT-2026-045</strong></div>
+              <div><span>Estado</span><strong style="color:#86efac;">Válido</strong></div>
+              <div><span>Emisor</span><strong>InformesPsicologicos.com</strong></div>
+              <div><span>Método</span><strong>QR / Código</strong></div>
             </div>
           </div>
-        </div>
+        </aside>
       </div>
     </section>
 
-    <section class="validator-section section" id="validar">
+    <section id="validar">
       <div class="container">
-        <div class="validator-card reveal">
-          <div class="validator-copy">
-            <span class="section-kicker">Validación</span>
+        <div class="card validator-card">
+          <div>
+            <span class="section-label">Validación</span>
             <h2>Ingrese el código del documento</h2>
-            <p>
-              Escriba el código exactamente como figura en el certificado.
-              El sistema acepta formatos como <strong>CERT-2026-045</strong>,
-              <strong>cert-2026-045</strong> o <strong>CERT 2026 045</strong>.
+            <p class="muted">
+              Escriba el código tal como figura en el certificado.
+              Ejemplo: <strong>CERT-2026-045</strong>.
             </p>
           </div>
 
-          <form class="validator-form" id="validatorForm" novalidate>
+          <form id="validatorForm">
             <label for="certCode">Código de validación</label>
-            <div class="input-action">
-              <input
-                id="certCode"
-                name="certCode"
-                type="text"
-                inputmode="text"
-                autocomplete="off"
-                placeholder="CERT-2026-045"
-                aria-describedby="validatorMessage"
-              />
+            <div class="input-row">
+              <input id="certCode" type="text" placeholder="CERT-2026-045" autocomplete="off">
               <button class="btn btn-primary" type="submit">Validar</button>
             </div>
-            <p id="validatorMessage" class="form-message" role="status"></p>
-
-            <div class="validation-preview" id="validationPreview" hidden>
-              <div class="preview-icon">✓</div>
-              <div>
-                <strong>Código reconocido</strong>
-                <span id="previewCode"></span>
-              </div>
-            </div>
+            <p id="validatorMessage" class="message"></p>
           </form>
         </div>
       </div>
     </section>
 
-    <section class="section" id="funcionamiento">
+    <section id="funcionamiento">
       <div class="container">
-        <div class="section-head reveal">
-          <span class="section-kicker">Funcionamiento</span>
-          <h2>Un flujo simple, claro y verificable.</h2>
-          <p>El receptor puede comprobar la autenticidad del documento sin instalar aplicaciones ni crear una cuenta.</p>
+        <div style="text-align:center;max-width:760px;margin:0 auto 34px;">
+          <span class="section-label">Funcionamiento</span>
+          <h2>Un flujo simple y verificable</h2>
+          <p class="muted">El receptor puede comprobar la autenticidad del documento sin instalar aplicaciones.</p>
         </div>
 
-        <div class="steps">
-          <article class="step-card reveal">
-            <span class="step-number">01</span>
-            <img src="assets/icon-qr.svg" alt="" />
+        <div class="grid-3">
+          <article class="mini-card">
+            <div class="mini-icon">1</div>
             <h3>Escanear QR</h3>
-            <p>El documento incluye un QR que dirige al sistema o al documento oficial de validación.</p>
+            <p>El documento incluye un código QR que dirige a la validación o al documento oficial.</p>
           </article>
 
-          <article class="step-card reveal">
-            <span class="step-number">02</span>
-            <img src="assets/icon-code.svg" alt="" />
+          <article class="mini-card">
+            <div class="mini-icon">2</div>
             <h3>Ingresar código</h3>
-            <p>También puede validarse manualmente con el código único impreso en el documento.</p>
+            <p>También puede validarse manualmente con el código único impreso en el certificado.</p>
           </article>
 
-          <article class="step-card reveal">
-            <span class="step-number">03</span>
-            <img src="assets/icon-check.svg" alt="" />
+          <article class="mini-card">
+            <div class="mini-icon">3</div>
             <h3>Confirmar origen</h3>
-            <p>SVE redirige al documento original publicado bajo el dominio oficial correspondiente.</p>
+            <p>El sistema redirige al documento original publicado en el dominio oficial.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section security" id="seguridad">
-      <div class="container security-grid">
-        <div class="security-copy reveal">
-          <span class="section-kicker">Seguridad documental</span>
-          <h2>Una capa de confianza para documentos profesionales.</h2>
-          <p>
+    <section id="seguridad" class="dark">
+      <div class="container">
+        <div class="card dark" style="box-shadow:none;border-color:rgba(255,255,255,.12);">
+          <span class="section-label">Seguridad documental</span>
+          <h2>Una capa de confianza para documentos profesionales</h2>
+          <p class="muted">
             La validación por QR y código único reduce el riesgo de adulteración,
             facilita la trazabilidad y mejora la presentación institucional ante terceros.
           </p>
@@ -222,33 +768,21 @@
             <li>Escalable hacia panel de administración, estadísticas e integraciones.</li>
           </ul>
         </div>
-
-        <div class="security-panel reveal">
-          <div class="terminal-head">
-            <span></span><span></span><span></span>
-          </div>
-          <pre><code>REQUEST /validar
-CODE: CERT-2026-045
-FORMAT: OK
-TARGET:
-https://www.informespsicologicos.com/cert-2026-045
-STATUS: REDIRECT_READY</code></pre>
-        </div>
       </div>
     </section>
 
-    <section class="section" id="planes">
+    <section id="planes">
       <div class="container">
-        <div class="section-head reveal">
-          <span class="section-kicker">Planes</span>
-          <h2>Implementación para profesionales e instituciones.</h2>
-          <p>Planes flexibles para incorporar validación electrónica en documentos profesionales.</p>
+        <div style="text-align:center;max-width:760px;margin:0 auto 34px;">
+          <span class="section-label">Planes</span>
+          <h2>Implementación para profesionales e instituciones</h2>
+          <p class="muted">Soluciones para incorporar validación electrónica en documentos profesionales.</p>
         </div>
 
-        <div class="pricing-grid">
-          <article class="price-card reveal">
+        <div class="grid-3">
+          <article class="mini-card">
             <h3>Profesional</h3>
-            <p class="price">Consultar</p>
+            <div class="price">Consultar</div>
             <ul>
               <li>Validación por QR</li>
               <li>Códigos únicos</li>
@@ -258,27 +792,26 @@ STATUS: REDIRECT_READY</code></pre>
             <a class="btn btn-secondary" href="mailto:sistemadevalidacionelectronica@gmail.com?subject=Consulta%20Plan%20Profesional%20SVE">Solicitar información</a>
           </article>
 
-          <article class="price-card featured reveal">
-            <div class="popular">Recomendado</div>
+          <article class="mini-card" style="border-color:#93c5fd;box-shadow:0 22px 60px rgba(37,99,235,.16);">
             <h3>Centro / Consultorio</h3>
-            <p class="price">Consultar</p>
+            <div class="price">Consultar</div>
             <ul>
               <li>Todo lo del plan profesional</li>
               <li>Personalización visual</li>
               <li>Soporte por WhatsApp</li>
               <li>Preparado para mayor volumen</li>
             </ul>
-            <a class="btn btn-primary" href="https://wa.me/5491124028499?text=Hola.%20Quisiera%20informaci%C3%B3n%20sobre%20SVE%20-%20Sistema%20de%20Validaci%C3%B3n%20Electr%C3%B3nica." target="_blank" rel="noopener">Consultar por WhatsApp</a>
+            <a class="btn btn-primary" href="https://wa.me/5491124028499?text=Hola.%20Quisiera%20informaci%C3%B3n%20sobre%20SVE%20-%20Sistema%20de%20Validaci%C3%B3n%20Electr%C3%B3nica." target="_blank">Consultar por WhatsApp</a>
           </article>
 
-          <article class="price-card reveal">
+          <article class="mini-card">
             <h3>Institucional</h3>
-            <p class="price">A medida</p>
+            <div class="price">A medida</div>
             <ul>
               <li>Implementación asistida</li>
               <li>Volumen de documentos</li>
               <li>Integraciones futuras</li>
-              <li>Panel administrativo en etapa posterior</li>
+              <li>Panel administrativo posterior</li>
             </ul>
             <a class="btn btn-secondary" href="mailto:sistemadevalidacionelectronica@gmail.com?subject=Consulta%20Plan%20Institucional%20SVE">Solicitar propuesta</a>
           </article>
@@ -286,101 +819,111 @@ STATUS: REDIRECT_READY</code></pre>
       </div>
     </section>
 
-    <section class="section faq" id="faq">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="section-kicker">Preguntas frecuentes</span>
-          <h2>Información clave del sistema.</h2>
-        </div>
-
-        <div class="faq-list reveal">
-          <details open>
-            <summary>¿Dónde se alojan los certificados actuales?</summary>
-            <p>Los certificados existentes continúan alojados en www.informespsicologicos.com/cert-2026-xxx. SVE funciona como capa de validación y redirección.</p>
-          </details>
-
-          <details>
-            <summary>¿El sistema necesita base de datos?</summary>
-            <p>La V3 no requiere base de datos: valida el formato del código y redirige al documento oficial. En una etapa posterior puede incorporarse base de datos para estados, auditoría y estadísticas.</p>
-          </details>
-
-          <details>
-            <summary>¿El formulario ya envía correos automáticamente?</summary>
-            <p>Actualmente abre el correo del usuario con el mensaje preparado. Luego puede conectarse a EmailJS, FormSubmit, Google Forms o un backend propio.</p>
-          </details>
-
-          <details>
-            <summary>¿Se puede agregar Mercado Pago?</summary>
-            <p>Sí. La sección de planes ya está preparada para incorporar botones de pago o enlaces de checkout.</p>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <section class="section contact" id="contacto">
+    <section id="contacto">
       <div class="container contact-grid">
-        <div class="contact-copy reveal">
-          <span class="section-kicker">Contacto</span>
-          <h2>Solicite información o una demostración.</h2>
-          <p>
-            Para consultas comerciales, implementación o soporte, comuníquese por email o WhatsApp.
-          </p>
-
-          <div class="contact-links">
-            <a href="mailto:sistemadevalidacionelectronica@gmail.com">sistemadevalidacionelectronica@gmail.com</a>
-            <a href="https://wa.me/5491124028499" target="_blank" rel="noopener">+54 9 11 2402-8499</a>
-          </div>
+        <div class="contact-box">
+          <span class="section-label">Contacto</span>
+          <h2>Solicite información o una demostración</h2>
+          <p class="muted">Para consultas comerciales, implementación o soporte, comuníquese por email o WhatsApp.</p>
+          <a href="mailto:sistemadevalidacionelectronica@gmail.com">sistemadevalidacionelectronica@gmail.com</a>
+          <a href="https://wa.me/5491124028499" target="_blank">+54 9 11 2402-8499</a>
         </div>
 
-        <form class="contact-form reveal" id="contactForm" novalidate>
-          <label for="name">Nombre</label>
-          <input id="name" name="name" type="text" placeholder="Nombre y apellido" required />
+        <div class="card">
+          <form id="contactForm">
+            <label for="name">Nombre</label>
+            <input id="name" type="text" placeholder="Nombre y apellido" required>
 
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" placeholder="correo@ejemplo.com" required />
+            <label for="email">Email</label>
+            <input id="email" type="email" placeholder="correo@ejemplo.com" required>
 
-          <label for="phone">Teléfono / WhatsApp</label>
-          <input id="phone" name="phone" type="text" placeholder="+54 9 11..." />
+            <label for="phone">Teléfono / WhatsApp</label>
+            <input id="phone" type="text" placeholder="+54 9 11...">
 
-          <label for="message">Mensaje</label>
-          <textarea id="message" name="message" placeholder="Quisiera recibir información sobre el sistema..." required></textarea>
+            <label for="message">Mensaje</label>
+            <textarea id="message" placeholder="Quisiera recibir información sobre el sistema..." required></textarea>
 
-          <button class="btn btn-primary" type="submit">Enviar consulta</button>
-          <p id="contactMessage" class="form-message">El formulario abrirá su correo con el mensaje preparado.</p>
-        </form>
+            <button class="btn btn-primary" type="submit">Enviar consulta</button>
+            <p id="contactMessage" class="message">El formulario abrirá su correo con el mensaje preparado.</p>
+          </form>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="container footer-grid">
-      <div>
-        <a class="brand footer-brand" href="#top">
-          <img class="brand-logo" src="assets/logo-sve.svg" alt="Logo SVE" />
-          <span>
-            <strong>Sistema de Validación Electrónica</strong>
-            <small>Verificación documental profesional</small>
-          </span>
-        </a>
-      </div>
-
-      <div class="footer-links">
-        <a href="#validar">Validar</a>
-        <a href="#planes">Planes</a>
-        <a href="#contacto">Contacto</a>
-      </div>
-    </div>
-
-    <div class="container footer-bottom">
+  <footer>
+    <div class="container footer-row">
       <span>© 2026 SVE · Sistema de Validación Electrónica</span>
       <span>validacion.informespsicologicos.com</span>
     </div>
   </footer>
 
-  <a class="whatsapp-float" href="https://wa.me/5491124028499?text=Hola.%20Quisiera%20informaci%C3%B3n%20sobre%20SVE%20-%20Sistema%20de%20Validaci%C3%B3n%20Electr%C3%B3nica." target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
-    <img src="assets/icon-whatsapp.svg" alt="" />
-  </a>
+  <a class="wa" href="https://wa.me/5491124028499?text=Hola.%20Quisiera%20informaci%C3%B3n%20sobre%20SVE%20-%20Sistema%20de%20Validaci%C3%B3n%20Electr%C3%B3nica." target="_blank" aria-label="WhatsApp">☏</a>
 
-  <script src="script.js"></script>
+  <script>
+    const CERT_DOMAIN = "https://www.informespsicologicos.com";
+    const CONTACT_EMAIL = "sistemadevalidacionelectronica@gmail.com";
+
+    function normalizeCode(value) {
+      const clean = value.trim().toUpperCase();
+      const match = clean.match(/^CERT[\\s-]?(\\d{4})[\\s-]?(\\d{3})$/);
+      if (!match) return null;
+      return `CERT-${match[1]}-${match[2]}`;
+    }
+
+    const validatorForm = document.getElementById("validatorForm");
+    const certCode = document.getElementById("certCode");
+    const validatorMessage = document.getElementById("validatorMessage");
+
+    validatorForm.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const code = normalizeCode(certCode.value);
+
+      if (!code) {
+        validatorMessage.textContent = "Formato inválido. Use un código como CERT-2026-045.";
+        validatorMessage.className = "message error";
+        return;
+      }
+
+      validatorMessage.textContent = "Código válido. Redirigiendo al documento oficial...";
+      validatorMessage.className = "message ok";
+
+      setTimeout(function() {
+        window.location.href = CERT_DOMAIN + "/" + code.toLowerCase();
+      }, 700);
+    });
+
+    const contactForm = document.getElementById("contactForm");
+    const contactMessage = document.getElementById("contactMessage");
+
+    contactForm.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      if (!name || !email || !message) {
+        contactMessage.textContent = "Complete nombre, email y mensaje.";
+        contactMessage.className = "message error";
+        return;
+      }
+
+      const subject = encodeURIComponent("Consulta - SVE Sistema de Validación Electrónica");
+      const body = encodeURIComponent(
+        "Nombre: " + name + "\\n" +
+        "Email: " + email + "\\n" +
+        "Teléfono / WhatsApp: " + phone + "\\n\\n" +
+        "Mensaje:\\n" + message
+      );
+
+      contactMessage.textContent = "Abriendo su correo...";
+      contactMessage.className = "message ok";
+
+      window.location.href = "mailto:" + CONTACT_EMAIL + "?subject=" + subject + "&body=" + body;
+    });
+  </script>
 </body>
 </html>
