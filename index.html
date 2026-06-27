@@ -3,286 +3,383 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sistema de Validación Electrónica | Validación segura de documentos</title>
-  <meta name="description" content="Sistema de Validación Electrónica de InformesPsicologicos.com. Validación segura de documentos mediante código QR o código único." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <title>SVE | Sistema de Validación Electrónica</title>
+  <meta name="description" content="Sistema profesional de validación electrónica de documentos mediante código QR o código único de verificación." />
+  <meta name="keywords" content="validación electrónica, certificados digitales, QR, documentos profesionales, SVE, verificación documental" />
+  <meta name="author" content="Sistema de Validación Electrónica" />
+  <meta name="robots" content="index, follow" />
+
+  <meta property="og:title" content="SVE | Sistema de Validación Electrónica" />
+  <meta property="og:description" content="Verificación segura de documentos profesionales mediante código QR o código único." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://validacion.informespsicologicos.com/" />
+  <meta property="og:image" content="https://validacion.informespsicologicos.com/assets/og-image.svg" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="SVE | Sistema de Validación Electrónica" />
+  <meta name="twitter:description" content="Verificación segura de documentos profesionales mediante QR o código único." />
+  <meta name="twitter:image" content="https://validacion.informespsicologicos.com/assets/og-image.svg" />
+
+  <link rel="canonical" href="https://validacion.informespsicologicos.com/" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.svg" />
+  <link rel="manifest" href="site.webmanifest" />
   <link rel="stylesheet" href="style.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"SoftwareApplication",
+    "name":"SVE - Sistema de Validación Electrónica",
+    "applicationCategory":"BusinessApplication",
+    "operatingSystem":"Web",
+    "url":"https://validacion.informespsicologicos.com/",
+    "description":"Sistema profesional de validación electrónica de documentos mediante QR y código único.",
+    "publisher":{
+      "@type":"Organization",
+      "name":"Sistema de Validación Electrónica",
+      "email":"sistemadevalidacionelectronica@gmail.com"
+    }
+  }
+  </script>
 </head>
+
 <body>
-  <header class="site-header" id="top">
-    <nav class="navbar container" aria-label="Navegación principal">
-      <a class="brand" href="#top" aria-label="Sistema de Validación Electrónica">
-        <span class="brand-mark">SVE</span>
-        <span class="brand-text">Sistema de Validación Electrónica</span>
+  <div class="site-bg" aria-hidden="true"></div>
+
+  <header class="header" id="top">
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="Inicio SVE">
+        <img class="brand-logo" src="assets/logo-sve.svg" alt="Logo SVE" />
+        <span>
+          <strong>Sistema de Validación Electrónica</strong>
+          <small>Powered by InformesPsicologicos.com</small>
+        </span>
       </a>
 
-      <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
       </button>
 
-      <div class="nav-menu">
+      <nav class="nav-links" id="navLinks" aria-label="Navegación principal">
         <a href="#validar">Validar</a>
-        <a href="#plataforma">Plataforma</a>
         <a href="#seguridad">Seguridad</a>
         <a href="#planes">Planes</a>
-        <a href="#contacto">Contacto</a>
-        <a href="https://wa.me/5491124028499?text=Hola.%20Quisiera%20recibir%20informaci%C3%B3n%20sobre%20el%20Sistema%20de%20Validaci%C3%B3n%20Electr%C3%B3nica." class="nav-cta" target="_blank" rel="noopener">WhatsApp</a>
-      </div>
-    </nav>
+        <a href="#faq">FAQ</a>
+        <a class="nav-cta" href="#contacto">Contacto</a>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <section class="hero section-padding">
+    <section class="hero section">
       <div class="container hero-grid">
-        <div class="hero-content">
-          <p class="eyebrow">Validación documental SaaS</p>
-          <h1>Verificá documentos digitales con QR o código de validación en segundos.</h1>
-          <p class="hero-subtitle">Una plataforma profesional integrada a www.informespsicologicos.com para consultar y validar certificados, informes, constancias y documentos mediante URL pública, código QR y código único.</p>
+        <div class="hero-copy reveal">
+          <div class="eyebrow">
+            <span class="pulse-dot"></span>
+            Plataforma activa de verificación documental
+          </div>
+
+          <h1>Validación electrónica profesional mediante QR o código único.</h1>
+
+          <p class="lead">
+            SVE permite verificar la autenticidad de certificados, informes y documentos
+            profesionales emitidos digitalmente, redirigiendo al documento original alojado
+            en el dominio oficial del emisor.
+          </p>
+
           <div class="hero-actions">
             <a class="btn btn-primary" href="#validar">Validar documento</a>
-            <a class="btn btn-secondary" href="#contacto">Solicitar implementación</a>
+            <a class="btn btn-secondary" href="#funcionamiento">Ver funcionamiento</a>
           </div>
+
           <div class="trust-row" aria-label="Características principales">
-            <span>Dominio verificado</span>
-            <span>QR seguro</span>
+            <span>QR</span>
             <span>Código único</span>
+            <span>Dominio oficial</span>
+            <span>Mobile ready</span>
           </div>
         </div>
 
-        <aside class="validation-card" aria-label="Panel de validación rápida">
-          <div class="card-header">
-            <div>
-              <span class="status-dot"></span>
-              <strong>Validación en línea</strong>
+        <div class="hero-visual reveal">
+          <div class="glass-device">
+            <div class="device-top">
+              <span></span><span></span><span></span>
             </div>
-            <span class="badge">Activo</span>
+
+            <div class="scan-card">
+              <div class="qr-shell">
+                <img src="assets/qr-demo.svg" alt="Código QR demostrativo" />
+                <div class="scan-line"></div>
+              </div>
+
+              <div class="verified-badge">
+                <span>✓</span>
+                Documento verificado
+              </div>
+
+              <div class="verify-table">
+                <div><span>Código</span><strong>CERT-2026-045</strong></div>
+                <div><span>Estado</span><strong class="ok">Válido</strong></div>
+                <div><span>Emisor</span><strong>InformesPsicologicos.com</strong></div>
+                <div><span>Método</span><strong>QR / Código</strong></div>
+              </div>
+            </div>
           </div>
-          <div class="qr-preview" aria-hidden="true">
-            <div class="qr-grid"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="validator-section section" id="validar">
+      <div class="container">
+        <div class="validator-card reveal">
+          <div class="validator-copy">
+            <span class="section-kicker">Validación</span>
+            <h2>Ingrese el código del documento</h2>
+            <p>
+              Escriba el código exactamente como figura en el certificado.
+              El sistema acepta formatos como <strong>CERT-2026-045</strong>,
+              <strong>cert-2026-045</strong> o <strong>CERT 2026 045</strong>.
+            </p>
           </div>
-          <form class="quick-form" id="heroValidationForm">
-            <label for="heroCode">Código de validación</label>
-            <div class="input-group">
-              <input id="heroCode" name="heroCode" type="text" placeholder="Ej: CERT-2026-045" autocomplete="off" />
-              <button type="submit">Consultar</button>
+
+          <form class="validator-form" id="validatorForm" novalidate>
+            <label for="certCode">Código de validación</label>
+            <div class="input-action">
+              <input
+                id="certCode"
+                name="certCode"
+                type="text"
+                inputmode="text"
+                autocomplete="off"
+                placeholder="CERT-2026-045"
+                aria-describedby="validatorMessage"
+              />
+              <button class="btn btn-primary" type="submit">Validar</button>
+            </div>
+            <p id="validatorMessage" class="form-message" role="status"></p>
+
+            <div class="validation-preview" id="validationPreview" hidden>
+              <div class="preview-icon">✓</div>
+              <div>
+                <strong>Código reconocido</strong>
+                <span id="previewCode"></span>
+              </div>
             </div>
           </form>
-          <div class="mock-result" id="heroResult">
-            <span class="check-icon">✓</span>
-            <div>
-              <strong>Documento verificable</strong>
-              <p>Ingrese un código para ir a la página oficial de validación.</p>
-            </div>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <section class="logos-section">
-      <div class="container logos-wrap">
-        <span>Diseñado para</span>
-        <strong>Profesionales</strong>
-        <strong>Instituciones</strong>
-        <strong>Empresas</strong>
-        <strong>Estudios jurídicos</strong>
-      </div>
-    </section>
-
-    <section class="section-padding" id="validar">
-      <div class="container validation-section">
-        <div class="section-copy">
-          <p class="eyebrow">Consulta pública</p>
-          <h2>Validación rápida, clara y confiable.</h2>
-          <p>El usuario puede escanear el QR o ingresar manualmente el código del documento. El sistema redirige a la página oficial de validación alojada en www.informespsicologicos.com, por ejemplo: /cert-2026-045.</p>
-        </div>
-
-        <div class="validator-panel">
-          <div class="tabs" role="tablist" aria-label="Método de validación">
-            <button class="tab active" type="button" data-tab="code">Código</button>
-            <button class="tab" type="button" data-tab="qr">QR</button>
-          </div>
-
-          <div class="tab-panel active" id="codePanel">
-            <form id="validationForm">
-              <label for="validationCode">Ingrese el código de validación</label>
-              <input id="validationCode" type="text" placeholder="CERT-2026-045" autocomplete="off" />
-              <button class="btn btn-primary full" type="submit">Verificar documento</button>
-            </form>
-          </div>
-
-          <div class="tab-panel" id="qrPanel">
-            <div class="upload-box">
-              <span class="upload-icon">▣</span>
-              <strong>Escanear código QR</strong>
-              <p>El QR impreso en cada documento debe apuntar a su URL oficial de validación, por ejemplo: www.informespsicologicos.com/cert-2026-045.</p>
-              <button class="btn btn-secondary" type="button" id="simulateQr">Abrir ejemplo QR</button>
-            </div>
-          </div>
-
-          <div class="result-box" id="resultBox" aria-live="polite">
-            <span class="result-icon">i</span>
-            <div>
-              <strong>Esperando consulta</strong>
-              <p>Ingrese un código o abra el ejemplo QR para acceder a la página oficial de validación.</p>
-            </div>
-          </div>
         </div>
       </div>
     </section>
 
-    <section class="section-padding muted" id="plataforma">
+    <section class="section" id="funcionamiento">
       <div class="container">
-        <div class="section-heading centered">
-          <p class="eyebrow">Plataforma integral</p>
-          <h2>Todo lo necesario para emitir y validar documentos profesionales.</h2>
-          <p>Una arquitectura pensada para organizaciones que necesitan reducir fraudes, centralizar verificaciones y ofrecer confianza a terceros.</p>
+        <div class="section-head reveal">
+          <span class="section-kicker">Funcionamiento</span>
+          <h2>Un flujo simple, claro y verificable.</h2>
+          <p>El receptor puede comprobar la autenticidad del documento sin instalar aplicaciones ni crear una cuenta.</p>
         </div>
 
-        <div class="features-grid">
-          <article class="feature-card">
-            <span class="feature-icon">01</span>
-            <h3>Emisión con código único</h3>
-            <p>Cada documento se identifica con un código del tipo CERT-2026-045 y una URL pública única.</p>
+        <div class="steps">
+          <article class="step-card reveal">
+            <span class="step-number">01</span>
+            <img src="assets/icon-qr.svg" alt="" />
+            <h3>Escanear QR</h3>
+            <p>El documento incluye un QR que dirige al sistema o al documento oficial de validación.</p>
           </article>
-          <article class="feature-card">
-            <span class="feature-icon">02</span>
-            <h3>QR dinámico</h3>
-            <p>El QR dirige directamente a www.informespsicologicos.com/cert-2026-XXX para verificar autenticidad.</p>
+
+          <article class="step-card reveal">
+            <span class="step-number">02</span>
+            <img src="assets/icon-code.svg" alt="" />
+            <h3>Ingresar código</h3>
+            <p>También puede validarse manualmente con el código único impreso en el documento.</p>
           </article>
-          <article class="feature-card">
-            <span class="feature-icon">03</span>
-            <h3>Panel administrativo</h3>
-            <p>Organización manual o automatizada de documentos emitidos, estados, vencimientos y revocaciones.</p>
-          </article>
-          <article class="feature-card">
-            <span class="feature-icon">04</span>
-            <h3>Registro de auditoría</h3>
-            <p>Registro interno de documentos y consultas para mejorar la trazabilidad operativa.</p>
+
+          <article class="step-card reveal">
+            <span class="step-number">03</span>
+            <img src="assets/icon-check.svg" alt="" />
+            <h3>Confirmar origen</h3>
+            <p>SVE redirige al documento original publicado bajo el dominio oficial correspondiente.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section-padding" id="seguridad">
+    <section class="section security" id="seguridad">
       <div class="container security-grid">
-        <div class="section-copy">
-          <p class="eyebrow">Seguridad documental</p>
-          <h2>Menos falsificaciones. Más confianza institucional.</h2>
-          <p>El sistema permite comprobar autenticidad sin exponer información sensible innecesaria. La página pública puede mostrar solo los datos mínimos: código, estado, fecha de emisión, entidad emisora y vigencia.</p>
+        <div class="security-copy reveal">
+          <span class="section-kicker">Seguridad documental</span>
+          <h2>Una capa de confianza para documentos profesionales.</h2>
+          <p>
+            La validación por QR y código único reduce el riesgo de adulteración,
+            facilita la trazabilidad y mejora la presentación institucional ante terceros.
+          </p>
+
           <ul class="check-list">
-            <li>Estados visibles: válido, vencido, revocado o en revisión.</li>
-            <li>URL pública de verificación para terceros, empresas, instituciones o juntas médicas.</li>
-            <li>Compatibilidad con certificados, informes, constancias y credenciales.</li>
+            <li>Redirección al dominio oficial del emisor.</li>
+            <li>Compatible con certificados, informes y constancias.</li>
+            <li>Preparado para estados futuros: válido, revocado, expirado o en revisión.</li>
+            <li>Escalable hacia panel de administración, estadísticas e integraciones.</li>
           </ul>
         </div>
 
-        <div class="security-card">
-          <div class="shield">✓</div>
-          <h3>Documento válido</h3>
-          <dl>
-            <div>
-              <dt>Código</dt>
-              <dd>CERT-2026-045</dd>
-            </div>
-            <div>
-              <dt>Emisor</dt>
-              <dd>InformesPsicologicos.com</dd>
-            </div>
-            <div>
-              <dt>Estado</dt>
-              <dd><span class="green-pill">Vigente</span></dd>
-            </div>
-          </dl>
+        <div class="security-panel reveal">
+          <div class="terminal-head">
+            <span></span><span></span><span></span>
+          </div>
+          <pre><code>REQUEST /validar
+CODE: CERT-2026-045
+FORMAT: OK
+TARGET:
+https://www.informespsicologicos.com/cert-2026-045
+STATUS: REDIRECT_READY</code></pre>
         </div>
       </div>
     </section>
 
-    <section class="section-padding muted" id="planes">
+    <section class="section" id="planes">
       <div class="container">
-        <div class="section-heading centered">
-          <p class="eyebrow">Planes SaaS</p>
-          <h2>Implementación flexible para cada volumen de emisión.</h2>
+        <div class="section-head reveal">
+          <span class="section-kicker">Planes</span>
+          <h2>Implementación para profesionales e instituciones.</h2>
+          <p>Planes flexibles para incorporar validación electrónica en documentos profesionales.</p>
         </div>
 
         <div class="pricing-grid">
-          <article class="price-card">
-            <h3>Inicial</h3>
-            <p>Para profesionales independientes.</p>
-            <strong class="price">AR$ —</strong>
-            <ul>
-              <li>Validación por código</li>
-              <li>QR por documento</li>
-              <li>Página pública básica</li>
-            </ul>
-            <a class="btn btn-secondary full" href="#contacto">Consultar</a>
-          </article>
-          <article class="price-card featured">
-            <span class="popular">Recomendado</span>
+          <article class="price-card reveal">
             <h3>Profesional</h3>
-            <p>Para equipos e instituciones.</p>
-            <strong class="price">AR$ —</strong>
+            <p class="price">Consultar</p>
             <ul>
-              <li>Panel administrativo</li>
-              <li>Estados y vencimientos</li>
-              <li>Registro de auditoría</li>
+              <li>Validación por QR</li>
+              <li>Códigos únicos</li>
+              <li>Diseño institucional básico</li>
+              <li>Soporte por email</li>
             </ul>
-            <a class="btn btn-primary full" href="#contacto">Solicitar demo</a>
+            <a class="btn btn-secondary" href="mailto:sistemadevalidacionelectronica@gmail.com?subject=Consulta%20Plan%20Profesional%20SVE">Solicitar información</a>
           </article>
-          <article class="price-card">
-            <h3>Enterprise</h3>
-            <p>Para organizaciones con integraciones.</p>
-            <strong class="price">A medida</strong>
+
+          <article class="price-card featured reveal">
+            <div class="popular">Recomendado</div>
+            <h3>Centro / Consultorio</h3>
+            <p class="price">Consultar</p>
             <ul>
-              <li>API de validación</li>
-              <li>Dominio personalizado</li>
-              <li>Soporte de implementación</li>
+              <li>Todo lo del plan profesional</li>
+              <li>Personalización visual</li>
+              <li>Soporte por WhatsApp</li>
+              <li>Preparado para mayor volumen</li>
             </ul>
-            <a class="btn btn-secondary full" href="#contacto">Hablar con ventas</a>
+            <a class="btn btn-primary" href="https://wa.me/5491124028499?text=Hola.%20Quisiera%20informaci%C3%B3n%20sobre%20SVE%20-%20Sistema%20de%20Validaci%C3%B3n%20Electr%C3%B3nica." target="_blank" rel="noopener">Consultar por WhatsApp</a>
+          </article>
+
+          <article class="price-card reveal">
+            <h3>Institucional</h3>
+            <p class="price">A medida</p>
+            <ul>
+              <li>Implementación asistida</li>
+              <li>Volumen de documentos</li>
+              <li>Integraciones futuras</li>
+              <li>Panel administrativo en etapa posterior</li>
+            </ul>
+            <a class="btn btn-secondary" href="mailto:sistemadevalidacionelectronica@gmail.com?subject=Consulta%20Plan%20Institucional%20SVE">Solicitar propuesta</a>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="cta-section" id="contacto">
-      <div class="container cta-box">
-        <div>
-          <p class="eyebrow">Implementación rápida</p>
-          <h2>Convertí tus documentos en verificables desde InformesPsicologicos.com.</h2>
-          <p>Solicitá información para implementar validación por QR, código único y páginas públicas de verificación. Las consultas llegan a centroboro@gmail.com.</p>
+    <section class="section faq" id="faq">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-kicker">Preguntas frecuentes</span>
+          <h2>Información clave del sistema.</h2>
         </div>
-        <form class="contact-form" id="contactForm">
-          <input type="text" id="name" placeholder="Nombre y organización" required />
-          <input type="email" id="email" placeholder="Email de contacto" required />
-          <input type="tel" id="phone" placeholder="Teléfono / WhatsApp" />
-          <textarea id="message" rows="4" placeholder="Contanos qué documentos necesitás validar"></textarea>
-          <button class="btn btn-primary full" type="submit">Enviar solicitud por email</button>
-          <a class="btn btn-whatsapp full" href="https://wa.me/5491124028499?text=Hola.%20Quisiera%20recibir%20informaci%C3%B3n%20sobre%20el%20Sistema%20de%20Validaci%C3%B3n%20Electr%C3%B3nica." target="_blank" rel="noopener">Consultar por WhatsApp</a>
-          <small id="contactStatus">Email: centroboro@gmail.com · WhatsApp: +54 9 11 2402-8499</small>
+
+        <div class="faq-list reveal">
+          <details open>
+            <summary>¿Dónde se alojan los certificados actuales?</summary>
+            <p>Los certificados existentes continúan alojados en www.informespsicologicos.com/cert-2026-xxx. SVE funciona como capa de validación y redirección.</p>
+          </details>
+
+          <details>
+            <summary>¿El sistema necesita base de datos?</summary>
+            <p>La V3 no requiere base de datos: valida el formato del código y redirige al documento oficial. En una etapa posterior puede incorporarse base de datos para estados, auditoría y estadísticas.</p>
+          </details>
+
+          <details>
+            <summary>¿El formulario ya envía correos automáticamente?</summary>
+            <p>Actualmente abre el correo del usuario con el mensaje preparado. Luego puede conectarse a EmailJS, FormSubmit, Google Forms o un backend propio.</p>
+          </details>
+
+          <details>
+            <summary>¿Se puede agregar Mercado Pago?</summary>
+            <p>Sí. La sección de planes ya está preparada para incorporar botones de pago o enlaces de checkout.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contacto">
+      <div class="container contact-grid">
+        <div class="contact-copy reveal">
+          <span class="section-kicker">Contacto</span>
+          <h2>Solicite información o una demostración.</h2>
+          <p>
+            Para consultas comerciales, implementación o soporte, comuníquese por email o WhatsApp.
+          </p>
+
+          <div class="contact-links">
+            <a href="mailto:sistemadevalidacionelectronica@gmail.com">sistemadevalidacionelectronica@gmail.com</a>
+            <a href="https://wa.me/5491124028499" target="_blank" rel="noopener">+54 9 11 2402-8499</a>
+          </div>
+        </div>
+
+        <form class="contact-form reveal" id="contactForm" novalidate>
+          <label for="name">Nombre</label>
+          <input id="name" name="name" type="text" placeholder="Nombre y apellido" required />
+
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="correo@ejemplo.com" required />
+
+          <label for="phone">Teléfono / WhatsApp</label>
+          <input id="phone" name="phone" type="text" placeholder="+54 9 11..." />
+
+          <label for="message">Mensaje</label>
+          <textarea id="message" name="message" placeholder="Quisiera recibir información sobre el sistema..." required></textarea>
+
+          <button class="btn btn-primary" type="submit">Enviar consulta</button>
+          <p id="contactMessage" class="form-message">El formulario abrirá su correo con el mensaje preparado.</p>
         </form>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
+  <footer class="footer">
     <div class="container footer-grid">
       <div>
-        <strong>Sistema de Validación Electrónica</strong>
-        <p>Validación segura de documentos mediante QR y código único en www.informespsicologicos.com.</p>
+        <a class="brand footer-brand" href="#top">
+          <img class="brand-logo" src="assets/logo-sve.svg" alt="Logo SVE" />
+          <span>
+            <strong>Sistema de Validación Electrónica</strong>
+            <small>Verificación documental profesional</small>
+          </span>
+        </a>
       </div>
+
       <div class="footer-links">
         <a href="#validar">Validar</a>
-        <a href="#seguridad">Seguridad</a>
-        <a href="mailto:centroboro@gmail.com">centroboro@gmail.com</a>
-        <a href="https://wa.me/5491124028499" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="#planes">Planes</a>
+        <a href="#contacto">Contacto</a>
       </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <span>© 2026 SVE · Sistema de Validación Electrónica</span>
+      <span>validacion.informespsicologicos.com</span>
     </div>
   </footer>
 
-  <a class="floating-whatsapp" href="https://wa.me/5491124028499?text=Hola.%20Quisiera%20recibir%20informaci%C3%B3n%20sobre%20el%20Sistema%20de%20Validaci%C3%B3n%20Electr%C3%B3nica." target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">WhatsApp</a>
+  <a class="whatsapp-float" href="https://wa.me/5491124028499?text=Hola.%20Quisiera%20informaci%C3%B3n%20sobre%20SVE%20-%20Sistema%20de%20Validaci%C3%B3n%20Electr%C3%B3nica." target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+    <img src="assets/icon-whatsapp.svg" alt="" />
+  </a>
 
   <script src="script.js"></script>
 </body>

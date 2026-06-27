@@ -1,0 +1,16 @@
+{
+  "name": "SVE - Sistema de Validación Electrónica",
+  "short_name": "SVE",
+  "description": "Validación electrónica de documentos mediante QR y código único.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f6f8fc",
+  "theme_color": "#2563eb",
+  "icons": [
+    {
+      "src": "assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

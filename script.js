@@ -1,128 +1,124 @@
-const navToggle = document.querySelector('.nav-toggle');
-const navMenu = document.querySelector('.nav-menu');
-
-navToggle?.addEventListener('click', () => {
-  const isOpen = navMenu.classList.toggle('open');
-  navToggle.setAttribute('aria-expanded', String(isOpen));
-});
-
-document.querySelectorAll('.nav-menu a').forEach((link) => {
-  link.addEventListener('click', () => {
-    navMenu.classList.remove('open');
-    navToggle?.setAttribute('aria-expanded', 'false');
-  });
-});
-
-const tabs = document.querySelectorAll('.tab');
-const panels = {
-  code: document.getElementById('codePanel'),
-  qr: document.getElementById('qrPanel')
+const CONFIG = {
+  certificateDomain: "https://www.informespsicologicos.com",
+  contactEmail: "sistemadevalidacionelectronica@gmail.com",
+  whatsapp: "5491124028499"
 };
 
-tabs.forEach((tab) => {
-  tab.addEventListener('click', () => {
-    const selected = tab.dataset.tab;
+function normalizeCertificateCode(value) {
+  const clean = value.trim().toUpperCase();
+  const match = clean.match(/^CERT[\s-]?(\d{4})[\s-]?(\d{3})$/);
+  if (!match) return null;
+  return `CERT-${match[1]}-${match[2]}`;
+}
 
-    tabs.forEach((item) => item.classList.remove('active'));
-    tab.classList.add('active');
+function setMessage(element, text, type = "") {
+  element.textContent = text;
+  element.className = `form-message ${type}`.trim();
+}
 
-    Object.entries(panels).forEach(([key, panel]) => {
-      panel.classList.toggle('active', key === selected);
+function redirectToCertificate(code) {
+  const slug = code.toLowerCase();
+  window.location.href = `${CONFIG.certificateDomain}/${slug}`;
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const menuToggle = document.getElementById("menuToggle");
+  const navLinks = document.getElementById("navLinks");
+
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
     });
-  });
-});
 
-function normalizeCode(value) {
-  return value.trim().replace(/\s+/g, '').toUpperCase();
-}
-
-function getValidationStatus(code) {
-  if (!code) {
-    return {
-      type: 'warning',
-      icon: '!',
-      title: 'Código requerido',
-      text: 'Ingrese un código de validación para consultar el estado del documento.'
-    };
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+      });
+    });
   }
 
-  if (code.includes('REV') || code.includes('ANUL')) {
-    return {
-      type: 'danger',
-      icon: '×',
-      title: 'Documento revocado',
-      text: `El código ${code} figura como revocado o anulado en el sistema.`
-    };
+  const validatorForm = document.getElementById("validatorForm");
+  const certInput = document.getElementById("certCode");
+  const validatorMessage = document.getElementById("validatorMessage");
+  const validationPreview = document.getElementById("validationPreview");
+  const previewCode = document.getElementById("previewCode");
+
+  if (validatorForm && certInput && validatorMessage) {
+    certInput.addEventListener("input", () => {
+      const normalized = normalizeCertificateCode(certInput.value);
+
+      if (normalized) {
+        validationPreview.hidden = false;
+        previewCode.textContent = normalized;
+        setMessage(validatorMessage, "Formato reconocido. Puede validar el documento.", "success");
+      } else {
+        validationPreview.hidden = true;
+        previewCode.textContent = "";
+        if (certInput.value.trim().length > 0) {
+          setMessage(validatorMessage, "Ingrese un código con formato CERT-2026-045.", "error");
+        } else {
+          setMessage(validatorMessage, "");
+        }
+      }
+    });
+
+    validatorForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const normalized = normalizeCertificateCode(certInput.value);
+
+      if (!normalized) {
+        setMessage(validatorMessage, "Formato inválido. Use un código como CERT-2026-045.", "error");
+        certInput.focus();
+        return;
+      }
+
+      setMessage(validatorMessage, "Código válido. Redirigiendo al documento oficial...", "success");
+
+      setTimeout(() => redirectToCertificate(normalized), 700);
+    });
   }
 
-  if (code.includes('VEN') || code.includes('EXP')) {
-    return {
-      type: 'warning',
-      icon: '!',
-      title: 'Documento vencido',
-      text: `El código ${code} existe, pero su vigencia se encuentra vencida.`
-    };
+  const contactForm = document.getElementById("contactForm");
+  const contactMessage = document.getElementById("contactMessage");
+
+  if (contactForm) {
+    contactForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const form = new FormData(contactForm);
+      const name = String(form.get("name") || "").trim();
+      const email = String(form.get("email") || "").trim();
+      const phone = String(form.get("phone") || "").trim();
+      const message = String(form.get("message") || "").trim();
+
+      if (!name || !email || !message) {
+        setMessage(contactMessage, "Complete nombre, email y mensaje.", "error");
+        return;
+      }
+
+      const subject = encodeURIComponent("Consulta - SVE Sistema de Validación Electrónica");
+      const body = encodeURIComponent(
+        `Nombre: ${name}\nEmail: ${email}\nTeléfono / WhatsApp: ${phone}\n\nMensaje:\n${message}`
+      );
+
+      setMessage(contactMessage, "Abriendo su cliente de correo...", "success");
+      window.location.href = `mailto:${CONFIG.contactEmail}?subject=${subject}&body=${body}`;
+    });
   }
 
-  return {
-    type: 'success',
-    icon: '✓',
-    title: 'Documento válido',
-    text: `El código ${code} corresponde a un documento verificable y vigente.`
-  };
-}
+  const revealElements = document.querySelectorAll(".reveal");
 
-function renderResult(target, status) {
-  target.classList.remove('result-success', 'result-warning', 'result-danger');
-  target.classList.add(`result-${status.type}`);
-  target.innerHTML = `
-    <span class="result-icon">${status.icon}</span>
-    <div>
-      <strong>${status.title}</strong>
-      <p>${status.text}</p>
-    </div>
-  `;
-}
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("in-view");
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
 
-const validationForm = document.getElementById('validationForm');
-const validationCode = document.getElementById('validationCode');
-const resultBox = document.getElementById('resultBox');
-const simulateQr = document.getElementById('simulateQr');
-
-validationForm?.addEventListener('submit', (event) => {
-  event.preventDefault();
-  const code = normalizeCode(validationCode.value);
-  renderResult(resultBox, getValidationStatus(code));
-});
-
-simulateQr?.addEventListener('click', () => {
-  const simulatedCode = 'QR-DOC-2026-000123';
-  renderResult(resultBox, getValidationStatus(simulatedCode));
-});
-
-const heroForm = document.getElementById('heroValidationForm');
-const heroCode = document.getElementById('heroCode');
-const heroResult = document.getElementById('heroResult');
-
-heroForm?.addEventListener('submit', (event) => {
-  event.preventDefault();
-  const status = getValidationStatus(normalizeCode(heroCode.value));
-  heroResult.classList.remove('result-success', 'result-warning', 'result-danger');
-  heroResult.classList.add(`result-${status.type}`);
-  heroResult.innerHTML = `
-    <span class="check-icon">${status.icon}</span>
-    <div>
-      <strong>${status.title}</strong>
-      <p>${status.text}</p>
-    </div>
-  `;
-});
-
-const contactForm = document.getElementById('contactForm');
-const contactStatus = document.getElementById('contactStatus');
-
-contactForm?.addEventListener('submit', (event) => {
-  event.preventDefault();
-  contactStatus.textContent = 'Solicitud registrada. Este formulario puede integrarse con email, CRM o backend propio.';
-  contactForm.reset();
+  revealElements.forEach((element) => revealObserver.observe(element));
 });
